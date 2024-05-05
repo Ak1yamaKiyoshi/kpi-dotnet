@@ -1,10 +1,19 @@
 ﻿using System;
 
+
 namespace MatrixTasks {
     public class MatrixOperations {
         public static void Transpose(int[][] matrix) {
+            if (matrix == null || matrix.Length == 0 || matrix[0].Length == 0) {
+                throw new ArgumentException("Matrix is null or empty.");
+            }
+
             int rows = matrix.Length;
             int cols = matrix[0].Length;
+
+            if (rows != cols) {
+                throw new ArgumentException("Matrix is not square.");
+            }
 
             for (int i = 0; i < rows; i++) {
                 for (int j = i + 1; j < cols; j++) {
@@ -16,12 +25,16 @@ namespace MatrixTasks {
         }
 
         public static void ClearNE(int[][] matrix) {
+            if (matrix == null || matrix.Length == 0 || matrix[0].Length == 0) {
+                throw new ArgumentException("Matrix is null or empty.");
+            }
+
             int rows = matrix.Length;
             int cols = matrix[0].Length;
 
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
-                    if (i >= j) {
+                    if (i >= j) { 
                         matrix[i][j] = 0;
                     }
                 }
